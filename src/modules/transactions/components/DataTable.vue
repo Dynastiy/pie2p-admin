@@ -22,7 +22,15 @@
               {{ item.user.firstName + " " + item.user.lastName }}
             </td>
             <td>{{ item.currency.symbol + item.amount }}</td>
-            <td>{{ item.channel }}</td>
+            <td
+              class="text-capitalize"
+              :class="{
+                'text-danger': item.channel === 'withdrawal',
+                'text-success': item.channel === 'deposit',
+              }"
+            >
+              {{ item.channel }}
+            </td>
             <td>{{ timeStamp(item.createdAt) }}</td>
             <td>
               <span class="type">{{ item.transactionType }}</span>
@@ -46,6 +54,9 @@
           </tr>
         </tbody>
       </table>
+      <div>
+        <AppPagination />
+      </div>
     </div>
   </div>
 </template>
@@ -53,7 +64,9 @@
 <script>
 import { mapState, mapActions } from "vuex";
 import { timeStamp } from "@/plugins/filters";
+import AppPagination from "@/components/static/AppPagination.vue";
 export default {
+  components: { AppPagination },
   data: () => {
     return {
       timeStamp,

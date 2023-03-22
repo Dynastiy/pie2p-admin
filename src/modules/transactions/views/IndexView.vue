@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <h3 class="font-weight-bold spacer">{{ routeName }}</h3>
+    <h3 class="font-weight-bold spacer pb-0">{{ routeName }}</h3>
     <div class="spacer pt-0">
       <DataTable />
     </div>
