@@ -1,21 +1,22 @@
 <template>
-  <div id="app-drawer" class="py-4" :class="{ collapsible: isCollapsed }">
+  <div id="app-drawer" class="py-2" :class="{ collapsible: isCollapsed }">
     <ul>
       <li>
-        <!-- <img
-          role="button"
-          @click="collapseAppDrawer"
+        <img
           class="menu-icon"
-          src="@/assets/img/drawer.svg"
+          width="100px"
+          height="100px"
+          src="@/assets/img/logo.svg"
           alt=""
-        /> -->
+        />
       </li>
+      <hr style="background-color: var(--primary-50)" />
       <li v-for="item in menu" :key="item.id">
         <div class="menu-item">
           <span
             class="menu-item-link"
-            :role="item.header ? '' : 'button'"
-            @click="item.hasChildren ? openSubMenu(item) : goToLink(item)"
+            role="button"
+            @click="goToLink(item)"
             :class="{ 'active-link': item.parent === routeParent }"
           >
             <div class="d-flex align-items-center" style="gap: 10px">
@@ -28,29 +29,7 @@
                 {{ item.title }}
               </span>
             </div>
-            <span v-if="item.hasChildren">
-              <i-icon
-                :icon="
-                  subMenu === item.id ? 'prime:angle-down' : 'prime:angle-right'
-                "
-                width="30px"
-              />
-            </span>
           </span>
-          <div class="sub-menu" v-if="subMenu === item.id">
-            <span
-              role="button"
-              class="sub-menu-items"
-              v-for="subMenu in item.children"
-              :key="subMenu.id"
-              @click="$router.push(subMenu.url)"
-              :class="{ 'active-sub-menu': subMenu.subItem === routeName }"
-            >
-              <i-icon :icon="subMenu.icon" class="menu-item-icon" />
-              <span class="sub-menu-title"> {{ subMenu.title }} </span>
-            </span>
-          </div>
-          <hr class="bg-white" v-if="item.hasLine" />
         </div>
       </li>
 
@@ -61,7 +40,7 @@
 
 <script>
 import menu from "@/api/menu";
-// import { mapState } from "vuex";
+import { mapState } from "vuex";
 export default {
   data: () => {
     return {
@@ -73,13 +52,6 @@ export default {
     goToLink(item) {
       this.$router.push(item.url);
     },
-    openSubMenu(item) {
-      this.subMenu = this.subMenu === item.id ? null : item.id;
-    },
-
-    collapseAppDrawer() {
-      this.$store.dispatch("drawer/setCollapseState");
-    },
   },
   computed: {
     routeName() {
@@ -88,9 +60,9 @@ export default {
     routeParent() {
       return this.$route.meta.parent;
     },
-    // ...mapState("drawer", {
-    //   isCollapsed: (state) => state.collapsed,
-    // }),
+    ...mapState("drawer", {
+      isCollapsed: (state) => state.collapsed,
+    }),
   },
 };
 </script>

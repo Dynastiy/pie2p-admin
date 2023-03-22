@@ -125,7 +125,12 @@ export default {
         });
         commit("SET_USER", responsePayload.user);
         commit("SET_SUCCESS", "Logged In");
-        router.push("/");
+
+        // Check redirect URL
+        const url = window.location.search;
+        const params = new URLSearchParams(url);
+        const d = params.get("redirectFrom");
+        router.push(d || "/");
 
         toastify({
           text: `Welcome back Admin`,

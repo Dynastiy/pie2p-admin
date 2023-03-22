@@ -24,7 +24,7 @@
             </div>
           </div>
 
-          <div class="mb-3">
+          <div class="mb-4">
             <label for="">Password</label>
             <div class="input-field">
               <i-icon icon="uil:padlock" class="form-icon" />
@@ -37,13 +37,13 @@
             </div>
           </div>
 
-          <div class="text-right mb-3">
+          <!-- <div class="text-right mb-3">
             <router-link
               to="/forgot-password"
               style="color: var(--primary-color)"
               >Forgot Password</router-link
             >
-          </div>
+          </div> -->
 
           <div class="">
             <button

@@ -1,8 +1,15 @@
 <template>
   <div id="app-header" class="spacer sticky-top">
     <div class="app-header-content">
-      <span>
-        <i-icon icon="mingcute:home-3-line" class="header-icon" />
+      <span role="button" @click="collapseMenu">
+        <i-icon
+          :icon="
+            isCollapsed
+              ? 'ant-design:menu-unfold-outlined'
+              : 'ant-design:menu-fold-outlined'
+          "
+          class="header-icon"
+        />
       </span>
 
       <div class="user-menu-actions">
@@ -38,18 +45,26 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 export default {
   data: () => {
     return {};
   },
-  methods: {},
+  methods: {
+    ...mapActions("drawer", ["setCollapseState"]),
+    collapseMenu() {
+      this.setCollapseState();
+    },
+  },
 
   mounted() {},
 
   computed: {
     ...mapState("auth", {
       user: (state) => state.user,
+    }),
+    ...mapState("drawer", {
+      isCollapsed: (state) => state.collapsed,
     }),
   },
 };

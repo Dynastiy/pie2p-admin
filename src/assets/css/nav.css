@@ -12,7 +12,7 @@
 
 /* When Menu is collapsed */
 #app-drawer.collapsible {
-    width: 120px;
+    width: 100px;
     transition: all 0.5s;
 }
 
@@ -48,8 +48,9 @@
 }
 
 #app-drawer ul li .menu-item-link.active-link {
-    background-color: var(--white-50);
+    background-color: var(--primary-50);
     color: var(--gray-800);
+    border-radius: 8px;
 }
 
 #app-drawer ul li .menu-item-link .menu-item-icon, #app-drawer ul li .sub-menu .sub-menu-items .menu-item-icon {

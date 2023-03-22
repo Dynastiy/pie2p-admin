@@ -59,16 +59,16 @@ html {
      --gray-900: #111827;
 
     /* Tertiary Theme  */
-    --tertiary-50: #FFFFF5;
-    --tertiary-100: #FDFFE9;
-    --tertiary-200: #FCFFD4;
-    --tertiary-300: #FAFFBE;
-    --tertiary-400: #F9FFA9;
-    --tertiary-500: #F7FF93;
-    --tertiary-600: #B9BF6E;
-    --tertiary-700: #7C804A;
-    --tertiary-800: #3E4025;
-    --tertiary-900: #191A0F;
+    --tertiary-50: #fff8ef;
+    --tertiary-100: #fff0de;
+    --tertiary-200: #ffe9ce;
+    --tertiary-300: #ffe1bd;
+    --tertiary-400: #ffdaac;
+    --tertiary-500: #fed29b;
+    --tertiary-600: #feca89;
+    --tertiary-700: #fdc276;
+    --tertiary-800: #fcba62;
+    --tertiary-900: #fbb24b;
 
      /* Yellow Scheme  */
      --yellow-50: #FFFCE6;
