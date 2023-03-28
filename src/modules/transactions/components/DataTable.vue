@@ -55,8 +55,20 @@
         </tbody>
       </table>
       <div>
-        <AppPagination />
+        <AppPagination :meta="meta" @next="viewData()" />
       </div>
+
+      <el-drawer
+        title="Transaction Details"
+        size="40%"
+        :visible.sync="drawer"
+        direction="rtl"
+      >
+        <hr class="mt-0" />
+        <div class="spacer pt-0">
+          <TransactionDetails />
+        </div>
+      </el-drawer>
     </div>
   </div>
 </template>
@@ -65,18 +77,24 @@
 import { mapState, mapActions } from "vuex";
 import { timeStamp } from "@/plugins/filters";
 import AppPagination from "@/components/static/AppPagination.vue";
+import TransactionDetails from "./TransactionDetails.vue";
 export default {
-  components: { AppPagination },
+  components: { AppPagination, TransactionDetails },
   data: () => {
     return {
       timeStamp,
+      drawer: false,
     };
   },
   methods: {
-    ...mapActions("transactions", ["view"]),
+    ...mapActions("transactions", ["list", "view"]),
+    viewData(page = 1) {
+      this.list(page);
+    },
     viewMore(value) {
-      this.$router.push(`transactions/${value.id}`);
       this.view(value.id);
+      console.log(value);
+      this.drawer = true;
     },
   },
   computed: {
@@ -84,6 +102,7 @@ export default {
       dataSet: (state) => state.dataSet,
       loading: (state) => state.loading,
       singleSuccess: (state) => state.singleSuccess,
+      meta: (state) => state.metaSet,
     }),
   },
 };

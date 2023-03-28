@@ -59,10 +59,10 @@
 /* Event Name  */
 .type, .status {
     color: var(--white-50);
-    padding: 6px 20px;
+    padding: 4px 12px;
     text-transform: capitalize;
-    border-radius: 20px;
-    font-size: 13px;
+    border-radius: 10px;
+    font-size: 12px;
     font-weight: 400;
 }
 
@@ -72,16 +72,19 @@
 
 
 .status.success, .status.open {
-    background-color: green;
+    color: green;
+    background-color: rgb(220, 251, 220);
 }
 
 .status.failed, .status.closed, .status.cancelled {
-    background-color: var(--error-500);
+    color: var(--error-500);
+    background-color: var(--error-50);
 }
 
 
 .status.pending {
-    background-color: var(--tertiary-900);
+   color: var(--tertiary-900);
+    background-color: var(--tertiary-50);
 }
 
 
@@ -273,6 +276,9 @@ select{
       td:last-child {
         border-radius: 0 20px 20px 0;
       }
+      .table thead th {
+        border-bottom: none
+      }
 
 
 
@@ -357,6 +363,24 @@ h1, h2, h3, h4, h5, h6, ul {
 .sub-header {
     font-weight: 400;
 }
+
+.details-header {
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--gray-500);
+    margin-bottom: 5px;
+}
+
+.details-body {
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+.details-body.description {
+    border: 0.4px solid var(--gray-300);
+    padding: 10px;
+    border-radius: 5px;
+} 
 
 /* ALERTS  */
 .error-alert {

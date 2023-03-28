@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Cookies from "js-cookie";
 import config from "@/config";
+
 // Module Routes
 import Auth from "@/modules/auth/router";
 import Currencies from "@/modules/currencies/router";

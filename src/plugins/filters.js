@@ -42,7 +42,7 @@ const formatAmount = (value) => {
 };
 
 const createRef = (value) => {
-  return !value ? "0" : value.split("-").join("").slice(0, 8);
+  return !value ? "0" : value.split("-").join("").slice(0, 3);
 };
 
 const dollarFilter2 = (value) => {

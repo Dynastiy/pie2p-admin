@@ -10,6 +10,7 @@ const getDefaultState = () => {
     success: false,
     dataSet: null,
     metaSet: null,
+    singleDataSet: null,
   };
 };
 
@@ -82,7 +83,7 @@ export default {
         let res = await $request.get(
           `admin/transactions?page=${page}&pageSize=8`
         );
-        console.log(res.data);
+        console.log(res);
         let responsePayload = res.data;
         commit("SET_DATA", responsePayload);
         return res;
@@ -112,7 +113,7 @@ export default {
         let res = await $request.get(`admin/transactions/${id}`);
         console.log(res);
         let responsePayload = res.data;
-        commit("SET_DATA", responsePayload.data);
+        commit("SET_SINGLE_DATA", responsePayload);
         return res;
       } catch (error) {
         console.log(error);
@@ -125,6 +126,7 @@ export default {
             borderRadius: "5px",
           },
         }).showToast();
+        commit("SET_LOADING", false);
         // commit("SET_SINGLE_ERROR", "Internal connection error");
         return error;
       } finally {
