@@ -44,3 +44,12 @@
     left: 0;
     border-radius: 5px 5px 0px 0px;
 }
+
+/* Transaction payment Details  */
+.payment-details {
+    display: grid;
+    display: -ms-grid;
+    display: -moz-grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}

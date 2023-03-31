@@ -1,6 +1,9 @@
 <template>
   <div class="transaction-details">
-    <div>
+    <div v-if="loading" class="text-center">
+      <i-icon icon="eos-icons:bubble-loading" />
+    </div>
+    <div v-else>
       <h6 class="" style="font-weight: 400">
         Transaction
         <span class="text-uppercase"> {{ "#" + createRef(item.id) }}</span>
@@ -42,8 +45,7 @@
           <div class="d-flex" style="gap: 10px">
             <img
               src="@/assets/img/no-user.png"
-              style="
-                width: 40px;
+              style="width: 40px;
                 height: 40px;
                 object-fit: cover;
                 object-position: top;
@@ -57,7 +59,7 @@
               <h6 class="details-body">
                 {{ item.user.firstName + " " + item.user.lastName }}
               </h6>
-              <p class="details-header">
+              <p class="details-body">
                 {{ item.user.email }}
               </p>
             </div>
@@ -68,11 +70,60 @@
       <hr />
       <div>
         <h6 class="details-header">Payment Details</h6>
+        <div class="payment-details" v-for="item in item.payment" :key="item.id">
+          <div>
+          <h6 class="details-header">Channel</h6>
+          <p
+            class="details-body"
+            :class="{
+              'text-danger': item.channel === 'withdrawal',
+              'text-success': item.channel === 'deposit',
+            }"
+          >
+            {{ item.channel }}
+          </p>
+        </div>
         <div>
-          Channel Gateway proof paymentType status bankName bankAccountNumber
-          amount
+          <h6 class="details-header">Gateway</h6>
+          <p class="details-body">
+                {{ item.gateway }}
+              </p>
+        </div>
+        <div>
+          <h6 class="details-header">Proof</h6>
+          <!-- <p class="details-body">
+                {{ item.proof }}
+              </p> -->
+              <a :href="url+item.proof" target="_blank" class="text-info details-body">View Proof</a>
+        </div>
+        <div>
+          <h6 class="details-header">Payment Type</h6>
+          <p class="details-body">
+                {{ item.paymentType }}
+              </p>
+        </div>
+        <div>
           <h6 class="details-header">Status</h6>
           <span class="status" :class="item.status">{{ item.status }}</span>
+        </div>
+        <div>
+          <h6 class="details-header">Bank Name</h6>
+          <p class="details-body">
+                {{ item.bankName || "No data" }}
+              </p>
+        </div>
+        <div>
+          <h6 class="details-header">Bank Account Number</h6>
+          <p class="details-body">
+                {{ item.bankAccountNumber || "No data" }}
+              </p>
+        </div>
+        <div>
+          <h6 class="details-header">Amount</h6>
+          <p class="details-body">
+                {{ item.amount }}
+              </p>
+        </div>
         </div>
       </div>
       <hr />
@@ -82,7 +133,6 @@
           {{ item.description }}
         </p>
       </div>
-      {{ item }}
     </div>
   </div>
 </template>
@@ -94,6 +144,7 @@ export default {
   data() {
     return {
       createRef,
+      url: process.env.VUE_APP_API_URL
       //   id: this.$route.params.id,
     };
   },
@@ -106,6 +157,7 @@ export default {
   computed: {
     ...mapState("transactions", {
       item: (state) => state.singleDataSet,
+      loading: (state) => state.loading,
     }),
   },
 };
