@@ -39,7 +39,7 @@
             </td>
             <td>{{ item.amount }}</td>
             <!-- <td>{{ item.channel }}</td> -->
-            <td class="">{{ item.address }}</td>
+            <td class="">{{ (item.address).slice(0,6)+"..." }}</td>
             <!-- <td class="text-right">{{ item.maxAmount }}</td> -->
             <td>{{ timeStamp(item.createdAt) }}</td>
             <!-- <td>{{ item.acceptedCurrency.symbol }}</td> -->

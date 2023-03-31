@@ -180,7 +180,7 @@ export default {
       } catch (error) {
         console.log(error);
         toastify({
-          text: `Internal connection error`,
+          text: `${error.data.message}`,
           className: "info",
           style: {
             background: "red",
@@ -188,10 +188,11 @@ export default {
             borderRadius: "5px",
           },
         }).showToast();
-
+        commit("SET_ERROR", "");
         return error;
       } finally {
         NProgress.done();
+       
       }
     },
 

@@ -32,25 +32,24 @@
         </div>
       </div>
       <div class="options spacer py-0">
-        <span
+        <!-- <span
           class="option-item"
           :class="{ 'active-item': activeEl === '1' }"
           @click="switchOption('1')"
           role="button"
           >Overview</span
-        >
+        > -->
         <span
           class="option-item"
           :class="{ 'active-item': activeEl === '2' }"
           role="button"
-          @click="switchOption('2')"
+          @click="getTradeOrders()"
           >Orders</span
         >
       </div>
     </div>
 
     <div class="spacer">
-      <trade-overview v-if="activeEl === '1'" />
       <trade-orders v-if="activeEl === '2'" />
     </div>
   </div>
@@ -59,13 +58,12 @@
 <script>
 import { createRef, timeStamp } from "@/plugins/filters";
 import TradeOrders from "../components/TradeOrders.vue";
-import TradeOverview from "../components/TradeOverview.vue";
 import { mapState, mapActions } from "vuex";
 export default {
-  components: { TradeOrders, TradeOverview },
+  components: { TradeOrders },
   data() {
     return {
-      activeEl: "1",
+      activeEl: "2",
       id: this.$route.params.id,
       createRef,
       timeStamp,
@@ -73,11 +71,8 @@ export default {
   },
   methods: {
     ...mapActions("trades", ["view", "tradeOrders", "closeTrade"]),
-    switchOption(value) {
-      this.activeEl = value;
-      if (value === "2") {
-        this.tradeOrders(this.id);
-      }
+    getTradeOrders() {
+      this.tradeOrders(this.id);
     },
     closeTradeID() {
       this.closeTrade(this.id);
@@ -85,6 +80,7 @@ export default {
   },
   beforeMount() {
     this.view(this.id);
+    this.getTradeOrders()
   },
   computed: {
     ...mapState("trades", {
