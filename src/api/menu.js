@@ -41,6 +41,14 @@ const menu = [
 
   {
     id: 6,
+    title: "Deposits",
+    url: "/deposits",
+    parent: "deposits",
+    icon: "uil:money-withdrawal",
+  },
+
+  {
+    id: 7,
     title: "User Management",
     url: "/user-management",
     parent: "user-management",
@@ -48,7 +56,7 @@ const menu = [
   },
 
   {
-    id: 7,
+    id: 8,
     title: "Currencies",
     url: "/currencies",
     parent: "currencies",

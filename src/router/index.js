@@ -12,6 +12,7 @@ import Trades from "@/modules/trades/router";
 import Transactions from "@/modules/transactions/router";
 import User from "@/modules/user-management/router";
 import Withdrawals from "@/modules/withdrawals/router";
+import Deposits from "@/modules/deposits/router"
 
 Vue.use(VueRouter);
 
@@ -28,7 +29,8 @@ const router = new VueRouter({
     Trades,
     Transactions,
     User,
-    Withdrawals
+    Withdrawals,
+    Deposits
   ),
 });
 

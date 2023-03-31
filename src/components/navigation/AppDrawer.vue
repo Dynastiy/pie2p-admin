@@ -1,11 +1,11 @@
 <template>
   <div id="app-drawer" class="py-2" :class="{ collapsible: isCollapsed }">
     <ul>
-      <li>
+      <li style="padding: 0.6rem 0rem 0rem 1rem">
         <img
-          class="menu-icon"
-          width="100px"
-          height="100px"
+          class=""
+          width="50px"
+          height="50px"
           src="@/assets/img/logo.svg"
           alt=""
         />
