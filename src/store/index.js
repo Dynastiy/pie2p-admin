@@ -9,8 +9,9 @@ import transactions from "@/modules/transactions/store/index";
 import trades from "@/modules/trades/store/index";
 import orders from "@/modules/orders/store/index";
 import users from "@/modules/user-management/store/index";
-import withdrawals from "@/modules/withdrawals/store"
-import deposits from "@/modules/deposits/store"
+import withdrawals from "@/modules/withdrawals/store";
+import deposits from "@/modules/deposits/store";
+import dashboard from "@/modules/dashboard/store"
 
 import createPersistedState from "vuex-persistedstate";
 
@@ -31,6 +32,7 @@ export default new Vuex.Store({
     orders,
     users,
     withdrawals,
-    deposits
+    deposits,
+    dashboard
   },
 });

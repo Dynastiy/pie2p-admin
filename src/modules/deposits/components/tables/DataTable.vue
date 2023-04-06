@@ -21,7 +21,7 @@
               <td class="text-capitalize">
                 {{ item.user.firstName + " " + item.user.lastName }}
               </td>
-              <td>{{ item.currency.symbol + item.amount }}</td>
+              <td>{{ item.currency.symbol + Number(item.amount ).toLocaleString()}}</td>
               <!-- <td
                 class="text-capitalize"
                 :class="{
@@ -59,7 +59,7 @@
         </div>
   
         <el-drawer
-          title="Withdrawal Details"
+          title="Deposit Details"
           size="40%"
           :visible.sync="drawer"
           direction="rtl"

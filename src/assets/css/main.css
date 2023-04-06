@@ -53,3 +53,55 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
+
+/* DASHBOARD  */
+.analytics {
+    display: grid;
+    display: -ms-grid;
+    display: -moz-grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.extended-card.transactions {
+    grid-column: 1 / span 2;
+}
+
+.extended-card.payments {
+    grid-column: 3 / span 2;
+}
+
+.data-card {
+    display: flex;
+    display: inline-flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.list-applicants {
+    display: grid;
+    display: -moz-grid;
+    display: -ms-grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  
+  .list-applicants h6 {
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--gray-400);
+  }
+
+  .list-applicants h6 .number {
+    color: var(--gray-900);
+    font-weight: 500;
+  }
+
+  .applicant-type {
+    display: flex;
+    display: inline-flex;
+    display: -webkit-flex;
+    gap: 3px;
+    align-items: center;
+  }

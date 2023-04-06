@@ -6,7 +6,7 @@ const Dashboard = () => import("../views/IndexView.vue");
 const routes = [
   {
     path: "/",
-    name: "dashboard",
+    name: "Dashboard",
     component: Dashboard,
     // beforeEnter: checkLoggedIn,
     meta: {

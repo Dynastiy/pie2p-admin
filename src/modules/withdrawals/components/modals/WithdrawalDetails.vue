@@ -5,7 +5,7 @@
       </div>
       <div v-else>
         <h6 class="" style="font-weight: 400">
-          Transaction
+          Withdrawal
           <span class="text-uppercase"> {{ "#" + createRef(item.id) }}</span>
         </h6>
   
@@ -15,8 +15,8 @@
             <span class="status" :class="item.status">{{ item.status }}</span>
           </div>
           <div class="w-100">
-            <h6 class="details-header">Transaction Type</h6>
-            <span class="type">{{ item.transactionType }}</span>
+            <h6 class="details-header">Payment Type</h6>
+            <span class="type">{{ item.paymentType }}</span>
           </div>
           <div class="w-100">
             <h6 class="details-header">Channel</h6>
@@ -37,7 +37,7 @@
           <div class="w-100">
             <h6 class="details-header">Total Amount</h6>
             <p class="details-body">
-              <!-- {{ item.currency.symbol + Number(item.amount).toLocaleString() }} -->
+              {{ item.currency.symbol + Number(item.amount).toLocaleString() }}
             </p>
           </div>
           <div class="w-100">
@@ -45,9 +45,7 @@
             <div class="d-flex" style="gap: 10px">
               <img
                 src="@/assets/img/no-user.png"
-                style="width: 40px;
-                  height: 40px;
-                  object-fit: cover;
+                style="width: 40px; height: 40px; object-fit: cover;
                   object-position: top;
                   -o-object-fit: cover;
                   -o-object-position: cover;
@@ -70,6 +68,7 @@
         <hr />
         <div>
           <h6 class="details-header">Payment Details</h6>
+          <div class="payment-details">
             <div>
             <h6 class="details-header">Channel</h6>
             <p
@@ -124,30 +123,86 @@
                 </p>
           </div>
           </div>
+          </div>
+          <hr>
+          <div>
+          <h6 class="details-header">Transaction Details</h6>
+         <div v-if="item.transaction">
+          <div>
+            <h6 class="details-header">Amount</h6>
+            <p class="details-body">
+              {{ item.transaction.currency.symbol + Number(item.transaction.amount).toLocaleString() }}
+              </p>
+          </div>
+          <div class="mt-4">
+            <h6 class="details-header">Child Transaction</h6>
+            <p class="details-body">
+              {{ item.transaction.currency.symbol + Number(item.transaction.childTransaction.amount).toLocaleString() }}
+              </p>
+              <small>{{ item.transaction.childTransaction.description }}</small>
+          </div>
+         </div>
         </div>
-        <hr />
-        <div>
-          <h6 class="details-header">Description</h6>
-          <p class="details-body description">
-            {{ item.description }}
-          </p>
+        
+        <div  v-if="item.status=== 'pending'">
+          <hr />
+          <div class="d-flex align-items-center justify-content-end mt-3" style="gap:20px" v-if="!confirmBox">
+            <button class="primary-btn" @click="openConfirmBox">Confirm</button>
+            <button class="danger-btn" @click="changeStatus('decline')">Decline</button>
+          </div>
+          <div v-if="confirmBox">
+            <h6 class="details-header">Upload Payment Proof</h6>
+            <input  type="file"
+                    id="file-ip-1"
+                   
+                    @change="addProof($event)">
+            <div class="d-flex align-items-center mt-3" style="gap:10px">
+              <button class="primary-btn" @click="changeStatus('confirm')">Submit</button>
+              <button class="outline-btn" @click="confirmBox = !confirmBox">Cancel</button>
+            </div>
+          </div>
+          
         </div>
+        </div>
+        
+        
     </div>
   </template>
   
   <script>
-  import { mapState } from "vuex";
+  import { mapState, mapActions } from "vuex";
   import { createRef } from "@/plugins/filters";
   export default {
     data() {
       return {
         createRef,
-        url: process.env.VUE_APP_API_URL
-        //   id: this.$route.params.id,
+        url: process.env.VUE_APP_API_URL,
+        confirmBox: false,
+        proof: null
       };
     },
     methods: {
-      // ...mapActions("transactions", ["view"]),
+      ...mapActions("withdrawals", ["updateStatus"]),
+      changeStatus(value) {
+        let formData = new FormData()
+        formData.append("proof", this.proof)
+        let payload = {
+          id: this.item.id,
+          operation: value,
+          page: "1",
+          formData: formData
+        }
+        // console.log(value);
+        this.updateStatus(payload)
+      },
+      openConfirmBox(){
+        this.confirmBox = !this.confirmBox
+      },
+      addProof () {
+      const input = event.target
+      this.proof = input.files[0]
+      console.log(this.proof)
+    },
     },
     beforeMount() {
       // this.view(this.id);

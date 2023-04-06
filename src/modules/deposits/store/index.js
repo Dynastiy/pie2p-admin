@@ -134,24 +134,14 @@ export default {
       }
     },
 
-    async searchEmail({ commit }, payload) {
-      let user_url = `admin/filter/user/email`;
-      let trainer_url = "admin/log/trainer";
-      let affiliate_url = "admin/log/affiliate";
+    async updateStatus({ commit, dispatch }, payload) {
       NProgress.start();
       commit("SET_LOADING", true);
       try {
-        let res = await $request.post(
-          payload.role === "user"
-            ? user_url
-            : payload.role === "trainer"
-            ? trainer_url
-            : affiliate_url,
-          payload.data
-        );
+        let res = await $request.put(`admin/deposits/${payload.id}/${payload.operation}`);
         console.log(res.data);
-        let responsePayload = res.data;
-        commit("SET_DATA", responsePayload.data);
+        dispatch("list", payload.page)
+        dispatch("view", payload.id)
         return res;
       } catch (error) {
         console.log(error);

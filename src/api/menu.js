@@ -55,13 +55,13 @@ const menu = [
     icon: "ci:users-group",
   },
 
-  {
-    id: 8,
-    title: "Currencies",
-    url: "/currencies",
-    parent: "currencies",
-    icon: "ph:money",
-  },
+  // {
+  //   id: 8,
+  //   title: "Currencies",
+  //   url: "/currencies",
+  //   parent: "currencies",
+  //   icon: "ph:money",
+  // },
 ];
 
 export default menu;

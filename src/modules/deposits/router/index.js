@@ -3,7 +3,7 @@ const Home = () => import("../views/IndexView.vue");
 const routes = [
   {
     path: "/deposits",
-    name: "deposits",
+    name: "Deposits",
     component: Home,
     meta: {
       layout: "DashboardLayout",
