@@ -119,7 +119,7 @@
         <div>
           <h6 class="details-header">Amount</h6>
           <p class="details-body">
-                {{ item.amount }}
+                {{ Number(item.amount).toLocaleString() }}
               </p>
         </div>
         </div>

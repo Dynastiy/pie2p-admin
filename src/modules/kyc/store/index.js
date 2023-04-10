@@ -9,8 +9,8 @@ const getDefaultState = () => {
     error: false,
     success: false,
     dataSet: null,
-    singleDataSet: {},
-    singleSuccess: null
+    metaSet: null,
+    singleDataSet: null,
   };
 };
 
@@ -53,7 +53,8 @@ export default {
     },
 
     SET_DATA(state, payload) {
-      state.dataSet = payload;
+      state.dataSet = payload.data;
+      state.metaSet = payload.meta;
       state.loading = false;
       state.error = false;
       state.success = false;
@@ -64,13 +65,6 @@ export default {
       state.loading = false;
       state.singleError = false;
       state.singleSuccess = true;
-    },
-
-    REMOVE_SINGLE_DATA(state) {
-      state.singleDataSet = null;
-      state.loading = false;
-      state.singleError = false;
-      state.singleSuccess = false;
     },
 
     REMOVE_SINGLE_DATA(state) {
@@ -86,10 +80,12 @@ export default {
       NProgress.start();
       commit("SET_LOADING", true);
       try {
-        let res = await $request.get(`admin/users?page=${page}&pageSize=20`);
-        console.log(res.data);
+        let res = await $request.get(
+          `admin/kycs?page=${page}&pageSize=8`
+        );
+        console.log(res);
         let responsePayload = res.data;
-        commit("SET_DATA", responsePayload.data);
+        commit("SET_DATA", responsePayload);
         return res;
       } catch (error) {
         console.log(error);
@@ -114,8 +110,8 @@ export default {
       NProgress.start();
       commit("SET_LOADING", true);
       try {
-        let res = await $request.get(`admin/users/${id}`);
-        console.log(res.data);
+        let res = await $request.get(`admin/deposits/${id}`);
+        console.log(res);
         let responsePayload = res.data;
         commit("SET_SINGLE_DATA", responsePayload);
         return res;
@@ -131,31 +127,21 @@ export default {
           },
         }).showToast();
         commit("SET_LOADING", false);
-        commit("SET_ERROR", "Internal connection error");
+        // commit("SET_SINGLE_ERROR", "Internal connection error");
         return error;
       } finally {
         NProgress.done();
       }
     },
 
-    async searchEmail({ commit }, payload) {
-      let user_url = `admin/filter/user/email`;
-      let trainer_url = "admin/log/trainer";
-      let affiliate_url = "admin/log/affiliate";
+    async updateStatus({ commit, dispatch }, payload) {
       NProgress.start();
       commit("SET_LOADING", true);
       try {
-        let res = await $request.post(
-          payload.role === "user"
-            ? user_url
-            : payload.role === "trainer"
-            ? trainer_url
-            : affiliate_url,
-          payload.data
-        );
+        let res = await $request.put(`admin/deposits/${payload.id}/${payload.operation}`);
         console.log(res.data);
-        let responsePayload = res.data;
-        commit("SET_DATA", responsePayload.data);
+        dispatch("list", payload.page)
+        dispatch("view", payload.id)
         return res;
       } catch (error) {
         console.log(error);
@@ -176,3 +162,4 @@ export default {
     },
   },
 };
+[]

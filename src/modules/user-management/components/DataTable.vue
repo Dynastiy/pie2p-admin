@@ -45,24 +45,34 @@
         </tbody>
       </table>
     </div>
+
+    <!-- User Details  -->
+    <userID v-if="singleSuccess"/>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 import { timeStamp } from "@/plugins/filters";
+import userID from './modals/userID.vue';
 export default {
+  components: { userID },
   data: () => {
     return {
       timeStamp,
+      details: false
     };
   },
   methods: {
-    // ...mapActions("users", ["view"]),
+    ...mapActions("users", ["view"]),
     viewMore(value) {
-      this.$router.push(`users/${value.id}`);
-      //   this.view(value.id);
+      // this.$router.push(`users/${value.id}`);
+        this.view(value.id);
+      this.details = true
     },
+    closeModal(){
+      this.details = false
+    }
   },
   computed: {
     ...mapState("users", {

@@ -55,6 +55,14 @@ const menu = [
     icon: "ci:users-group",
   },
 
+  {
+    id: 8,
+    title: "KYC",
+    url: "/kyc",
+    parent: "kyc",
+    icon: "solar:user-check-outline",
+  },
+
   // {
   //   id: 8,
   //   title: "Currencies",

@@ -12,6 +12,7 @@ import users from "@/modules/user-management/store/index";
 import withdrawals from "@/modules/withdrawals/store";
 import deposits from "@/modules/deposits/store";
 import dashboard from "@/modules/dashboard/store"
+import kyc from "@/modules/kyc/store"
 
 import createPersistedState from "vuex-persistedstate";
 
@@ -33,6 +34,7 @@ export default new Vuex.Store({
     users,
     withdrawals,
     deposits,
-    dashboard
+    dashboard, 
+    kyc
   },
 });

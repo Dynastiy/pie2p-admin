@@ -13,6 +13,7 @@ import Transactions from "@/modules/transactions/router";
 import User from "@/modules/user-management/router";
 import Withdrawals from "@/modules/withdrawals/router";
 import Deposits from "@/modules/deposits/router"
+import kyc from "@/modules/kyc/router"
 
 Vue.use(VueRouter);
 
@@ -30,7 +31,8 @@ const router = new VueRouter({
     Transactions,
     User,
     Withdrawals,
-    Deposits
+    Deposits, 
+    kyc
   ),
 });
 
