@@ -89,7 +89,7 @@
     background-color: var(--primary-500);
     border-radius: 8px;
     text-transform: uppercase;
-    padding: 12px 25px;
+    padding: 10px 25px;
     font-weight: 500;
     color: var(--white-50);
     font-size: 14px;
@@ -100,7 +100,7 @@
     background-color: var(--error-500);
     border-radius: 8px;
     text-transform: uppercase;
-    padding: 12px 25px;
+    padding: 10px 25px;
     font-weight: 500;
     color: var(--white-50);
     font-size: 14px;

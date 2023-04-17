@@ -110,7 +110,7 @@ export default {
       NProgress.start();
       commit("SET_LOADING", true);
       try {
-        let res = await $request.get(`admin/deposits/${id}`);
+        let res = await $request.get(`admin/kycs/${id}`);
         console.log(res);
         let responsePayload = res.data;
         commit("SET_SINGLE_DATA", responsePayload);
@@ -138,7 +138,7 @@ export default {
       NProgress.start();
       commit("SET_LOADING", true);
       try {
-        let res = await $request.put(`admin/deposits/${payload.id}/${payload.operation}`);
+        let res = await $request.put(`admin/users/${payload.user_id}/${payload.operation}`);
         console.log(res.data);
         dispatch("list", payload.page)
         dispatch("view", payload.id)
