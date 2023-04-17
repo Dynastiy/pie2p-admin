@@ -55,7 +55,7 @@
           <a :href="url+data.document" target="_blank" class="text-info details-body">View Proof</a>
         </div>
         <hr>
-        <div class="d-flex" style="gap: 10px">
+        <div class="d-flex" style="gap: 10px" v-if="data.status === 'pending'">
           <button class="primary-btn" @click="updateKYC('approve-kyc')">Approve</button>
           <button class="danger-btn" @click="updateKYC('decline-kyc')">Decline</button>
         </div>
