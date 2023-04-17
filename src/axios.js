@@ -54,7 +54,7 @@ $axios.interceptors.response.use(
       //place your re-entry code
       // router.push("/login");
     }
-    console.log(error.response.data.status_code);
+    console.log(error.response);
     //return Promise.reject(error);
     return Promise.reject(error.response);
   }

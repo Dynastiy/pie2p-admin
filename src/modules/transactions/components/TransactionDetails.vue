@@ -59,7 +59,7 @@
               <h6 class="details-body">
                 {{ item.user.firstName + " " + item.user.lastName }}
               </h6>
-              <p class="details-body">
+              <p class="details-body text-lowercase">
                 {{ item.user.email }}
               </p>
             </div>

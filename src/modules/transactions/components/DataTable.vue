@@ -16,6 +16,9 @@
           </tr>
         </thead>
         <tbody>
+          <span class="text-danger" v-if="dataSet.length === 0" style="font-size: 14px"> 
+                No Data here
+            </span>
           <tr v-for="(item, index) in dataSet" :key="item.id">
             <td>{{ "#" + (index + 1) }}</td>
             <td class="text-capitalize">
