@@ -1,0 +1,41 @@
+/** @type {import('tailwindcss').Config} */
+const colors = require("tailwindcss/colors");
+module.exports = {
+  prefix: "tw-",
+  important: true,
+  // purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+  theme: {
+    screens: {
+      sm: "320px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
+    },
+    extend: {},
+    colors: {
+      primary50: "#d8cbe6",
+      primary100: "#bfa9d6",
+      primary200: "#a586c6",
+      primary300: "#8b63b5",
+      primary400: "#714a9c",
+      primary500: "#563876",
+      primary600: "#3f2956",
+      primary700: "#261934",
+      primary800: "#0d0811",
+      secondary: process.env.SECONDARY_COLOR,
+      "icon-gray": "#828282",
+      light: "#828282",
+      gray1: "#333333",
+      gray2: "#4F4F4F",
+      gray3: "#525660",
+      gray4: "#BDBDBD",
+      gray6: "#F2F2F2",
+      gray7: "#F6F7F8",
+      danger: "#B60808",
+      ...colors,
+    },
+  },
+  plugins: [],
+};

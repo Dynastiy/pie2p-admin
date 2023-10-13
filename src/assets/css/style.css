@@ -15,3 +15,6 @@
 
 /* Media Query  */
 @import url("./media-query.css");
+
+/* Tailwind */
+@import url("./tailwind.css");

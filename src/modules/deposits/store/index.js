@@ -81,7 +81,7 @@ export default {
       commit("SET_LOADING", true);
       try {
         let res = await $request.get(
-          `admin/deposits?page=${page}&pageSize=8`
+          `admin/deposits?page=${page}&pageSize=12`
         );
         console.log(res);
         let responsePayload = res.data;

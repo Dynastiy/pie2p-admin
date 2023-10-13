@@ -9,6 +9,7 @@ const getDefaultState = () => {
     error: false,
     success: false,
     dataSet: null,
+    metaSet: null,
     singleDataSet: {},
     orders: null,
   };
@@ -53,7 +54,8 @@ export default {
     },
 
     SET_DATA(state, payload) {
-      state.dataSet = payload;
+      state.dataSet = payload.data;
+      state.metaSet = payload.meta
       state.loading = false;
       state.error = false;
       state.success = false;
@@ -86,10 +88,10 @@ export default {
       NProgress.start();
       commit("SET_LOADING", true);
       try {
-        let res = await $request.get(`admin/trades?page=${page}&pageSize=20`);
+        let res = await $request.get(`admin/trades?page=${page}&pageSize=12`);
         console.log(res.data);
         let responsePayload = res.data;
-        commit("SET_DATA", responsePayload.data);
+        commit("SET_DATA", responsePayload);
         return res;
       } catch (error) {
         console.log(error);

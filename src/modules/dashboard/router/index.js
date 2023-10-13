@@ -1,4 +1,4 @@
-const Dashboard = () => import("../views/IndexView.vue");
+const Dashboard = () => import("../views/AnalyticsPage.vue");
 
 // import Vuex store logics
 // import store from "@/store";

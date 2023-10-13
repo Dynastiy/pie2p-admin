@@ -163,7 +163,7 @@
 }
 
 
-.status.success, .status.open {
+.status.success, .status.approved, .status.open {
     color: green;
     background-color: rgb(220, 251, 220);
 }
@@ -303,74 +303,37 @@ select{
 }
 
 /* TABLE  */
-/* .table td,
+.table td,
 .table th {
-    font-size: 14px;
+    border-top: none;
+    border-bottom: none;
+    font-size: 0.8rem;
     vertical-align: middle;
-    font-weight: 500;
 }
 
 .table td {
-    color: var(--gray-800);
-    font-weight: 300;
-    border-bottom: 0.5px solid var(--gray-300);
+    border-bottom: 1px solid var(--gray-300) !important;
+    font-weight: 500;
+    font-size: 0.8rem;
 }
-
 
 .table tbody tr:hover {
     background-color: rgba(0, 0, 0, 0.06);
 }
 
 .table thead th {
-    border-bottom: none;
-    color: var(--white-50) !important;
-    background-color: var(--primary-500);
-} */
-
-.table td, .table th, .table thead th {
-    border-top: transparent;
-    vertical-align: middle;
+    color: var(--gray-500) !important;
 }
-    table {
-        border-collapse: separate;
-        border-spacing: 0 15px;
-        width: 100%;
-      }
-      th {
-        color: white;
-      }
-      th{
-        /* width: 100%; */
-        border: none;
-        /* padding: 5px; */
-        background: var(--primary-500);
-        font-size: 0.8rem;
-        text-align: center;
-      }
-      td {
-        /* width: 100%; */
-        border: none;
-        /* padding: 5px; */
-        background: var(--gray-50);
-        padding: 1rem;
-        font-size: 0.8rem;
-        text-align: center;
-      }
-      th:nth-child(1) {
-        border-radius: 20px 0 0 20px;
-      }
-      th:last-child {
-        border-radius: 0 20px 20px 0;
-      }
-      td:nth-child(1) {
-        border-radius: 20px 0 0 20px;
-      }
-      td:last-child {
-        border-radius: 0 20px 20px 0;
-      }
-      .table thead th {
-        border-bottom: none
-      }
+
+.table thead th {
+    border-bottom: 1px solid var(--gray-300) !important;
+    color: var(--gray-700) !important;
+    background-color: var(--gray-200) !important;
+}
+
+.table td {
+    color: var(--gray-800) !important;
+}
 
 
 

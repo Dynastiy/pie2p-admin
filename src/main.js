@@ -16,8 +16,27 @@ Vue.use(ElementUI);
 
 import "toastify-js/src/toastify.css";
 
+// Plugins
+import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
+
+// Import Bootstrap and BootstrapVue CSS files (order is important)
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
+
+// Make BootstrapVue available throughout your project
+Vue.use(BootstrapVue);
+
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin);
+
+import $axios from "@/axios"
+Vue.prototype.$axios = $axios
+
 import { Icon } from "@iconify/vue2";
 Vue.component("i-icon", Icon);
+
+import toastify from 'toastify-js'
+Vue.prototype.$toastify = toastify
 
 new Vue({
   router,
