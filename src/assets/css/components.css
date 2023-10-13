@@ -518,3 +518,9 @@ h1, h2, h3, h4, h5, h6, ul {
     place-items: center;
     font-weight: 600;
   }
+
+
+  /* :horizontal */
+  hr {
+    margin: 15px 0 !important;
+  }
