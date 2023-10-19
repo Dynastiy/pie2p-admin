@@ -34,7 +34,7 @@ export default {
     return {
       fields: [
         {
-          key: "fullName",
+          key: "userName",
           label: "Full Name",
         },
         {

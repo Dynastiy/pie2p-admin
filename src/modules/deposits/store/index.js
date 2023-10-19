@@ -140,7 +140,6 @@ export default {
       try {
         let res = await $request.put(`admin/deposits/${payload.id}/${payload.operation}`);
         console.log(res.data);
-        dispatch("list", payload.page)
         dispatch("view", payload.id)
         return res;
       } catch (error) {

@@ -1,5 +1,5 @@
 <template>
-  <div class="details-page" v-loading="loading">
+  <div class="spacer" v-loading="loading">
     <div class="details-top">
       <div class="spacer">
         <span class="" role="button" @click="$router.go(-1)">

@@ -65,6 +65,7 @@ export default {
 
     view(e) {
       console.log(e);
+      this.$router.push(`/withdrawal/${e.id}`)
     },
 
     getData(e) {

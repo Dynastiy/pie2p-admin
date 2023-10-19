@@ -124,7 +124,10 @@
         <slot name="edit" :data="item"></slot>
       </template>
       <template #cell(fullName)="data">
-        <span class="tw-capitalize">{{ `${data.item.user.firstName} ${data.item.user.lastName}` }}</span>
+        <span class="tw-capitalize" v-if="data.item.user">{{ `${data.item.user.firstName} ${data.item.user.lastName}` }}</span>
+      </template>
+      <template #cell(userName)="data">
+        <span class="tw-capitalize">{{ `${data.item.firstName} ${data.item.lastName}` }}</span>
       </template>
       <template #cell(channel)="data">
         <span

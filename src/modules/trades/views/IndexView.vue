@@ -79,14 +79,14 @@ export default {
           key: "actions",
           label: ""
         }
-      ]
+      ],
     };
   },
   methods: {
     ...mapActions("trades", ["list"]),
 
     view(e) {
-      console.log(e);
+      this.$router.push(`trade/${e.id}`)
     },
 
     getData(e) {
